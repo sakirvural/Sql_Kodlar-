@@ -1,2 +1,2 @@
 # Sql_Kodlari
-Sakladığım kodlar
+Not kodları
