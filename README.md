@@ -1,2 +1,2 @@
-# Sql_Kodlar-
+# Sql_Kodlari
 Sakladığım kodlar
