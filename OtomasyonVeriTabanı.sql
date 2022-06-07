@@ -6,7 +6,7 @@ create schema COR ---- tablo isimlerinin ba��
 select * from COR.Customer
 
 --denemeDENEME3999
-
+--dsadasd
 -----PARAMETRELER TABLOSU ASLI
 --create table ParameterType
 --(
