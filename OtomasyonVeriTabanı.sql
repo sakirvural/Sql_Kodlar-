@@ -8,6 +8,7 @@ select * from COR.Customer
 --denemeDENEME3999
 --dsadasd
 --aaaddddsss
+---deneee
 
 -----PARAMETRELER TABLOSU ASLI
 --create table ParameterType
