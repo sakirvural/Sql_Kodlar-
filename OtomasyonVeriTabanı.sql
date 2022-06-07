@@ -15,7 +15,7 @@ select * from COR.Customer
 --explanation nvarchar(50)
 --)
 
-
+özellik 6
 --SELECT * FROM STRING_SPLIT(@parameterName,',')--- PAR�ALAMA ��LEM�
 ---CONCAT string birle�tirme
 
