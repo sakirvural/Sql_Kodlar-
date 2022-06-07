@@ -1,5 +1,7 @@
 Özellik ekliyorum
 ozellik 2
+
+özellik 4
 create schema CUS--�EMA OLU�TURMA ��LEMLER ���N CUS ADINI VERD�K
 create schema COR ---- tablo isimlerinin ba��
 
