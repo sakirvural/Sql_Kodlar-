@@ -18,6 +18,8 @@ select * from COR.Customer
 
 
 fdsfds
+
+özellik ekleme
 -----PARAMETRELER TABLOSU ASLI
 --create table ParameterType
 --(
