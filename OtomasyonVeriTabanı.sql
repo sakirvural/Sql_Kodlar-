@@ -11,6 +11,13 @@ select * from COR.Customer
 ---deneee
 
 
+
+
+
+
+
+
+fdsfds
 -----PARAMETRELER TABLOSU ASLI
 --create table ParameterType
 --(
