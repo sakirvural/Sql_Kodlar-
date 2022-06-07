@@ -1,9 +1,11 @@
 
 use Boa
-create schema CUS--ÞEMA OLUÞTURMA ÝÞLEMLER ÝÇÝN CUS ADINI VERDÝK
-create schema COR ---- tablo isimlerinin baþý
+create schema CUS--ï¿½EMA OLUï¿½TURMA ï¿½ï¿½LEMLER ï¿½ï¿½ï¿½N CUS ADINI VERDï¿½K
+create schema COR ---- tablo isimlerinin baï¿½ï¿½
 
 select * from COR.Customer
+
+--deneme yapÄ±yorum.
 
 -----PARAMETRELER TABLOSU ASLI
 --create table ParameterType
@@ -14,15 +16,15 @@ select * from COR.Customer
 --)
 
 
---SELECT * FROM STRING_SPLIT(@parameterName,',')--- PARÇALAMA ÝÞLEMÝ
----CONCAT string birleþtirme
+--SELECT * FROM STRING_SPLIT(@parameterName,',')--- PARï¿½ALAMA ï¿½ï¿½LEMï¿½
+---CONCAT string birleï¿½tirme
 
 
---sp_rename 'COR.Customer.knowledge', 'job', 'COLUMN' --- tablo ismini deðiþme
+--sp_rename 'COR.Customer.knowledge', 'job', 'COLUMN' --- tablo ismini deï¿½iï¿½me
 
 --SELECT * FROM COR.Customer FOR JSON AUTO
 
----ekleme kodlarým 
+---ekleme kodlarï¿½m 
 alter table COR.Customer 
 add  jobID int 
 
@@ -33,8 +35,8 @@ alter table COR.Customer
 drop column  jobID
 
 
----silme kodlarým 
---ALTER TABLE tablo_adi DROP COLUMN sütun_adi
+---silme kodlarï¿½m 
+--ALTER TABLE tablo_adi DROP COLUMN sï¿½tun_adi
 
 
 ALTER TABLE PAR.ParameterType
@@ -105,7 +107,7 @@ end
 
 
 
---MÜÞTERÝ TABLOSU
+--Mï¿½ï¿½TERï¿½ TABLOSU
 create Table COR.Customer
 (
 ID int primary key identity,
@@ -125,7 +127,7 @@ foreign key (educationID) references PAR.Parameter(parameterID),
 foreign key (jobID) references PAR.Parameter(parameterID)
 )
 
---ID GÖRE MÜÞTERÝ GETÝRME
+--ID Gï¿½RE Mï¿½ï¿½TERï¿½ GETï¿½RME
 create proc CUS.sel_Customer_ID
 (
 @ID int
@@ -139,7 +141,7 @@ full join PAR.Parameter p2 on c.jobID=p2.parameterID
 where ID=@ID
 end
 
---FÝLTRELÝ OLARAK MÜÞTERÝ GETÝRME
+--Fï¿½LTRELï¿½ OLARAK Mï¿½ï¿½TERï¿½ GETï¿½RME
 create proc CUS.sel_Customer_filtre
 (
 @customerNo varchar(20),
@@ -196,7 +198,7 @@ end
 
 
 
---MÜÞTERÝ GÝRME ÝÞLEÝ
+--Mï¿½ï¿½TERï¿½ Gï¿½RME ï¿½ï¿½LEï¿½
 create proc CUS.ins_Customer
 (
 @customerName nvarchar(30),
@@ -230,7 +232,7 @@ select top(1) CAST(SCOPE_IDENTITY() as int) from COR.Customer
 end
 end
 
---MÜÞTERÝ güncelleme
+--Mï¿½ï¿½TERï¿½ gï¿½ncelleme
 create proc CUS.upd_Customer
 (
 @ID int ,
@@ -252,7 +254,7 @@ jobID=(select parameterID from PAR.Parameter where explanation=@job),updateDate=
 where ID=@ID
 end
 
---MÜÞTERÝ SÝLME ÝÞLEMÝ
+--Mï¿½ï¿½TERï¿½ Sï¿½LME ï¿½ï¿½LEMï¿½
 create proc CUS.del_Customer
 (
 @ID int
@@ -274,16 +276,16 @@ active bit default 'true',
 accountNumber int not null,
 accountNumberExtra int ,--hesap 1 not null unique
 accountBalance decimal(28,4) default 0,--para
-currencyTypeID int,--döviz cinsi
-openDate datetime default GETDATE(),--açýlýþ tarihi
-closeDate datetime default null ,--kapanýþ tarihi
+currencyTypeID int,--dï¿½viz cinsi
+openDate datetime default GETDATE(),--aï¿½ï¿½lï¿½ï¿½ tarihi
+closeDate datetime default null ,--kapanï¿½ï¿½ tarihi
 --closeWhy nvarchar(50), --kapanma nedeni
 foreign key (accountNumber) references COR.Customer(ID),
 foreign key (currencyTypeID) references PAR.Parameter(parameterID)
 )
 
 
---EK HESAP NO  ÇEKME
+--EK HESAP NO  ï¿½EKME
 create proc CUS.sel_Customer_Account_Count
 (
 @accountNumber int
@@ -300,7 +302,7 @@ select '0'
 end
 end
 
---HESAP TABLOSUNU GETÝRME MÜÞTERÝ NUMARASINA GÖRE
+--HESAP TABLOSUNU GETï¿½RME Mï¿½ï¿½TERï¿½ NUMARASINA Gï¿½RE
 create proc CUS.sel_Customer_Account
 (
 @accountNumber int
@@ -312,7 +314,7 @@ full join PAR.Parameter p on  c.currencyTypeID=p.parameterID
 where accountNumber=@accountNumber 
 end
 
---YENÝ HESAP GÝRME 
+--YENï¿½ HESAP Gï¿½RME 
 
 create proc CUS.ins_Customer_Account
 (
@@ -329,10 +331,10 @@ end
 
 
 
---CONCANT--STRÝNG ÝFADELERÝ BÝRLEÞTÝRME
+--CONCANT--STRï¿½NG ï¿½FADELERï¿½ Bï¿½RLEï¿½Tï¿½RME
 
 --HESABI KAPATMA
-create proc CUS.del_Customer_Account---silme iþlemi
+create proc CUS.del_Customer_Account---silme iï¿½lemi
 (
 @accountNumber int,
 @accountNumberExtra int
@@ -346,8 +348,8 @@ where (accountNumberExtra=@accountNumberExtra and accountNumber=@accountNumber)
 end
 
 
---PARA YATIRMA ÇEKME ÝÞLEMÝ GERÝ YENÝ BAKÝYE GÖNDERME
-create proc CUS.upd_Customer_AccountBalance--para çekme yatýrma
+--PARA YATIRMA ï¿½EKME ï¿½ï¿½LEMï¿½ GERï¿½ YENï¿½ BAKï¿½YE Gï¿½NDERME
+create proc CUS.upd_Customer_AccountBalance--para ï¿½ekme yatï¿½rma
 (
 @accountNumber int,
 @accountNumberExtra int,
@@ -368,7 +370,7 @@ select @newBalance
 end
 
 
---PARA YATIRMA ÇEKME ÝÞLEM GEÇMÝSÝ TABLOSU
+--PARA YATIRMA ï¿½EKME ï¿½ï¿½LEM GEï¿½Mï¿½Sï¿½ TABLOSU
 create table COR.MoneyTransferHistory
 (
 historyID int identity,
@@ -381,7 +383,7 @@ transferHistory datetime default GETDATE(),
 foreign key (accountNumber) references COR.Customer(ID)
 )
 
---PARA YATIRMA ÇEKME ÝÞLEMÝ GETÝRME
+--PARA YATIRMA ï¿½EKME ï¿½ï¿½LEMï¿½ GETï¿½RME
 create proc CUS.sel_MoneyTransferHistory_Read
 (
 @accountNumber int,
@@ -396,7 +398,7 @@ end
 
 
 --alter table COR.Customer
---alter column TC nvarchar(11)--DÖNÜÞTÜRME
+--alter column TC nvarchar(11)--Dï¿½Nï¿½ï¿½Tï¿½RME
 
 ------------------------------------------------detay tablosu
 
@@ -421,7 +423,7 @@ begin
 select  p.explanation as phoneType,c.phoneNumber from COR.Customer_Phone c full join PAR.Parameter p on c.phoneTypeID = p.parameterID where c.cusID = @cusID
 end
 
---GÝRÝÞ 
+--Gï¿½Rï¿½ï¿½ 
 create proc CUS.ins_Customer_Phone
 (
 @phoneType nvarchar(30),
@@ -434,7 +436,7 @@ insert into COR.Customer_Phone(phoneTypeID,phoneNumber,cusID) values ((select pa
 @phoneNumber,@cusID)
 end
 
-----SÝLME ÝÞLEMÝ
+----Sï¿½LME ï¿½ï¿½LEMï¿½
 create proc CUS.del_Customer_Phone
 (
 @phoneNumber varchar(20)
@@ -465,7 +467,7 @@ begin
 select  p.explanation as emailType,c.email from COR.Customer_Email c full join PAR.Parameter p on c.emailTypeID = p.parameterID where c.cusID = @cusID
 end
 
---GÝRÝÞ 
+--Gï¿½Rï¿½ï¿½ 
 create proc CUS.ins_Customer_Email
 (
 @emailType nvarchar(30),
@@ -478,7 +480,7 @@ insert into COR.Customer_Email(emailTypeID,email,cusID) values ((select paramete
 @email,@cusID)
 end
 
-----SÝLME ÝÞLEMÝ
+----Sï¿½LME ï¿½ï¿½LEMï¿½
 create proc CUS.del_Customer_Email
 (
 @email nvarchar(50)
@@ -512,7 +514,7 @@ select  p.explanation as addressType,c.address from COR.Customer_Address c full 
 end
 
 
---GÝRÝÞ 
+--Gï¿½Rï¿½ï¿½ 
 create proc CUS.ins_Customer_Address
 (
 @cusID int,
@@ -546,7 +548,7 @@ end
 --inner join COR.Customer_Phone on COR.Customer.ID=COR.Customer_Phone.cusID where COR.Customer.ID=@cusID
 --end
 
----------------------------------------login tablolarý
+---------------------------------------login tablolarï¿½
 create Table BoaUser
 (
 ID int primary key identity(1,1),
