@@ -11,6 +11,7 @@ select * from COR.Customer
 ---deneee
 --ddd
 
+hilal
 
 
 -----PARAMETRELER TABLOSU ASLI
