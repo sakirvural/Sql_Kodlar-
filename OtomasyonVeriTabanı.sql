@@ -5,7 +5,9 @@ ozellik 2
 özellik 55
 create schema CUS--�EMA OLU�TURMA ��LEMLER ���N CUS ADINI VERD�K
 create schema COR ---- tablo isimlerinin ba��
-denemeyap
+denemeyapf43566
+5345434645
+
 select * from COR.Customer
 
 -----PARAMETRELER TABLOSU ASLI
